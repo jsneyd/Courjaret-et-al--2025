@@ -14,8 +14,6 @@
 % very good approximation in the physiological regime. This change helps
 % with the scaling of ce.
 
-% YOU HAVE TO RUN PREPARE_MESH.M FIRST, TO GET THE MESH READY.
-
 clear all
 close all
 clc
@@ -98,7 +96,7 @@ tic
 
 i=1;
 while time(i)<par.tend
-    par.time = time(i);
+    par.time = time(i);         % easiest way to pass time to the subroutines
     tt = time(i);               % for passing the time to all the fluxes, to get time-dependent behaviour
     if (min(xnew<0) || max(xnew>5000))
         fprintf('Crap here, at %4.2f\n',tt)
@@ -117,10 +115,9 @@ while time(i)<par.tend
     else
         delt = par.adapt_factor*max(abs(xnew(1:np_c)))/max(abs(react));
     end
-
-    time(i+1) = time(i) + delt;
-                   % easiest way to pass time to the subroutines
-    fprintf('%5.4f completed; sample ER value is %5.1f\n',time(i)/par.tend,xnew(np_c+1))                                    % For tracking how the computation is going
+    time(i+1) = time(i) + delt;                  
+    fprintf('%5.4f completed; sample ER value is %5.1f\n',time(i)/par.tend,xnew(np_c+1))     % For tracking how the computation is going
+    
     Amat_c = (mass_c + delt*stiff_c);        
     Amat_e = (mass_e + delt*stiff_e);
     Amat = [Amat_c       zeros(np_c,np_e);
@@ -149,7 +146,7 @@ end
 toc
 
 save output_temp1.mat
-%save initial.mat xnew
+
 
 %% plots
 figure(1)
@@ -459,8 +456,8 @@ global par
     par.initial_choose = 0; 
 
     par.ip_stim = 1;
-    par.t_stim = 0.25;
-    par.tend = 2;
+    par.t_stim = 0;
+    par.tend = 3;
         
     par.adapt_factor = 0.01;
 
