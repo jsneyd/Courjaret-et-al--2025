@@ -10,7 +10,7 @@ b) Sim_ (simulate the calcium model based on the polygon specified in Geom_Mesh_
 c) Plot_TS_ (generate time series plots which track the specified mesh points in the model based on the results produced from Sim_.
 
 ** Running the Simulation **
-Step 1: Open one of the Geom_Mesh_ files depending on what to simulate (choose from Geom_Mesh_Less_Tunnel, Geom_Mesh_No_Tunnel, or Geom_Mesh_Tunnel).
+Step 1: Open  one of the Geom_Mesh_ files depending on what to simulate (choose from Geom_Mesh_Less_Tunnel, Geom_Mesh_No_Tunnel, or Geom_Mesh_Tunnel).
 Step 2: Run the Geom_Mesh code which saves an output file that contains the P, E, T matrices of the cytoplasm and ER domains, and also the interior boundaries info which the cytoplasm and ER domains share. The geometry and mesh size can be changed as desired, but do take note of the possible error that might arise from conflicting interior boundary points between the ER and cytoplasm. The error can be rectified by choosing a different mesh size for the domains.
 Step 3: Open the corresponding Sim_ file.
 Step 4: The simulation time and conditions (i.e. addition of CPA, external Ca2+, and Histamine) can be adjusted as desired. Change nothing if it is to simulate the figures in the paper.
